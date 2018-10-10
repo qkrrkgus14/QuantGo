@@ -1,3 +1,4 @@
+#적용되는지확
 #-*-coding: utf-8 -*-
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
