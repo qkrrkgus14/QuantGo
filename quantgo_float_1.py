@@ -786,6 +786,7 @@ if __name__ == "__main__":
 
         #기준이 되는 종목명, 종목코드 끌어오는 [t8430]    
         df = t8430() #코스피
+        #ETF종목제외
         df = df[df.ETF구분 == 0]
         #df = df[['종목명','단축코드']]
         
@@ -910,65 +911,6 @@ if __name__ == "__main__":
                 time.sleep(720)
                 
         for i in range(720,len(df)):
-            time.sleep(1.1)
-            df_14 = t1471(종목코드=df[i][1])
-            df_14.insert(0,"종목명",df[i][0])
-            df_14.insert(1,"종목코드",df[i][1])
-            df_14.insert(2,"ETF구분", df[i][2])
-            df_1471 = df_1471.append(df_14)
-            print(df_1471)
-            #if i == 899:
-            #    print("타임슬립걸렸습니다")
-            #    print("약12분뒤에 다시 수집 시작합니다") 
-            #    time.sleep(720)
-
-writer = pd.ExcelWriter("result.xlsx", engine="xlsxwriter")
-df_result.to_excel(writer, sheet_name="Sheet1")
-writer.close()
-'''
-        for i in range(900,1080):
-            time.sleep(1.1)
-            df_14 = t1471(종목코드=df[i][1])
-            df_14.insert(0,"종목명",df[i][0])
-            df_14.insert(1,"종목코드",df[i][1])
-            df_14.insert(2,"ETF구분", df[i][2])
-            df_1471 = df_1471.append(df_14)
-            print(df_1471)
-            if i == 1079:
-                print("타임슬립걸렸습니다")
-                print("약12분뒤에 다시 수집 시작합니다") 
-                time.sleep(720)
-                
-        for i in range(1080,1260):
-            time.sleep(1.1)
-            df_14 = t1471(종목코드=df[i][1])
-            df_14.insert(0,"종목명",df[i][0])
-            df_14.insert(1,"종목코드",df[i][1])
-            df_14.insert(2,"ETF구분", df[i][2])
-            df_1471 = df_1471.append(df_14)
-            print(df_1471)
-            if i == 1259:
-                print("타임슬립걸렸습니다")
-                print("약12분뒤에 다시 수집 시작합니다") 
-                time.sleep(720)
-
-        print("df[1269]:",df[1269][0])
-        print("df[1270]:",df[1270][0])
-        
-        for i in range(1260,1440):
-            time.sleep(1.1)
-            df_14 = t1471(종목코드=df[i][1])
-            df_14.insert(0,"종목명",df[i][0])
-            df_14.insert(1,"종목코드",df[i][1])
-            df_14.insert(2,"ETF구분", df[i][2])
-            df_1471 = df_1471.append(df_14)
-            print(df_1471)
-            if i == 1439:
-                print("타임슬립걸렸습니다")
-                print("약12분뒤에 다시 수집 시작합니다") 
-                time.sleep(720)
-                
-        for i in range(1440,len(df)):
             time.sleep(1.1)
             df_14 = t1471(종목코드=df[i][1])
             df_14.insert(0,"종목명",df[i][0])
@@ -1105,7 +1047,7 @@ writer.close()
                 time.sleep(720) 
 
                 
-        for i in range(720,900):
+        for i in range(720,len(df)):
             print(i)
             time.sleep(0.5)
             df_8430_code = df[i][1] 
@@ -1129,121 +1071,7 @@ writer.close()
             df_axis.insert(3,"ETF구분",df_8430_etf)
             df_result = df_result.append(df_axis)
             print(df_result)
-            if i == 899:
-                print("타임슬립걸렸습니다")
-                print("약12분뒤에 다시 수집 시작합니다")
-                time.sleep(720) 
-
-                
-        for i in range(900,1080):
-            print(i)
-            time.sleep(0.5)
-            df_8430_code = df[i][1] 
-            df_8430_name = df[i][0]
-            df_8430_etf =  df[i][2]
-            df1 = t1471(종목코드=df_8430_code)
-            df2 = t1475(종목코드=df_8430_code)
-            df2 = df2.ix[:0]
-            df3 = t1636(종목코드=df_8430_code)
-            df3 = df3.ix[:0]
-            df5 = t1701(종목코드=df_8430_code)
-            df6 = t1702(종목코드=df_8430_code)
-            df6 = df6.ix[:0]
-            df7 = t1717(종목코드=df_8430_code)
-            df8 = t4201(단축코드=df_8430_code)
             
-            df_axis = pd.concat([df1,df2,df3,df5,df6,df7,df8],axis=1)
-            df_axis.insert(0,"일자",b)
-            df_axis.insert(1,"단축코드", df_8430_code)
-            df_axis.insert(2,"종목명", df_8430_name)
-            df_axis.insert(3,"ETF구분",df_8430_etf)
-            df_result = df_result.append(df_axis)
-            print(df_result)
-            if i == 1079:
-                print("타임슬립걸렸습니다")
-                print("약12분뒤에 다시 수집 시작합니다")
-                time.sleep(720) 
-
-                
-        for i in range(1080,1260):
-            print(i)
-            time.sleep(0.5)
-            df_8430_code = df[i][1] 
-            df_8430_name = df[i][0]
-            df_8430_etf =  df[i][2]
-            df1 = t1471(종목코드=df_8430_code)
-            df2 = t1475(종목코드=df_8430_code)
-            df2 = df2.ix[:0]
-            df3 = t1636(종목코드=df_8430_code)
-            df3 = df3.ix[:0]
-            df5 = t1701(종목코드=df_8430_code)
-            df6 = t1702(종목코드=df_8430_code)
-            df6 = df6.ix[:0]
-            df7 = t1717(종목코드=df_8430_code)
-            df8 = t4201(단축코드=df_8430_code)
-            
-            df_axis = pd.concat([df1,df2,df3,df5,df6,df7,df8],axis=1)
-            df_axis.insert(0,"일자",b)
-            df_axis.insert(1,"단축코드", df_8430_code)
-            df_axis.insert(2,"종목명", df_8430_name)
-            df_axis.insert(3,"ETF구분",df_8430_etf)
-            df_result = df_result.append(df_axis)
-            print(df_result)
-            if i == 1259:
-                print("타임슬립걸렸습니다")
-                print("약12분뒤에 다시 수집 시작합니다")
-                time.sleep(720) 
-
-                
-        for i in range(1260,1440):
-            print(i)
-            time.sleep(0.5)
-            df_8430_code = df[i][1] 
-            df_8430_name = df[i][0]
-            df_8430_etf =  df[i][2]
-            df1 = t1471(종목코드=df_8430_code)
-            df2 = t1475(종목코드=df_8430_code)
-            df2 = df2.ix[:0]
-            df3 = t1636(종목코드=df_8430_code)
-            df3 = df3.ix[:0]
-            df5 = t1701(종목코드=df_8430_code)
-            df6 = t1702(종목코드=df_8430_code)
-            df6 = df6.ix[:0]
-            df7 = t1717(종목코드=df_8430_code)
-            df8 = t4201(단축코드=df_8430_code)
-            
-            df_axis = pd.concat([df1,df2,df3,df5,df6,df7,df8],axis=1)
-            df_axis.insert(0,"일자",b)
-            df_axis.insert(1,"단축코드", df_8430_code)
-            df_axis.insert(2,"종목명", df_8430_name)
-            df_axis.insert(3,"ETF구분",df_8430_etf)
-            df_result = df_result.append(df_axis)
-            print(df_result)
-            if i == 1439:
-                print("타임슬립걸렸습니다")
-                print("약12분뒤에 다시 수집 시작합니다")
-                time.sleep(720) 
-
-
-        for i in range(1440,len(df)):
-            print(i)
-            time.sleep(0.5)
-            df_8430_code = df[i][1] 
-            df_8430_name = df[i][0]
-            df_8430_etf =  df[i][2]
-            
-            df1 = t1471(종목코드=df_8430_code)
-            df2 = t1475(종목코드=df_8430_code)
-            df2 = df2.ix[:0]
-            df3 = t1636(종목코드=df_8430_code)
-            df3 = df3.ix[:0]
-            df5 = t1701(종목코드=df_8430_code)
-            df6 = t1702(종목코드=df_8430_code)
-            df6 = df6.ix[:0]
-            df7 = t1717(종목코드=df_8430_code)
-            df8 = t4201(단축코드=df_8430_code)
-            
-        
             df_axis = pd.concat([df1,df2,df3,df5,df6,df7,df8],axis=1)
             
             df_axis.insert(0,"일자",b)
