@@ -8,6 +8,7 @@ import pythoncom
 import os, sys
 import inspect
 import time
+import pymysql.cursors
 
 import pandas as pd
 from pandas import DataFrame, Series, Panel
@@ -72,9 +73,9 @@ def Login(url='hts.etrade.co.kr', port=20001, svrtype=0, id='qkrrkgus', pwd='tes
     return (True, 0, "OK", 계좌, session)
     
 def t8430(구분='1'):   #구분에 따른 상장된 전 종목=0, 코스피=1, 코스닥=2
-    '''
-    주식종목코드조회
-    '''
+    
+    #주식종목코드조회
+    
     query = win32com.client.DispatchWithEvents("XA_DataSet.XAQuery", XAQueryEvents)
     pathname = os.path.dirname(sys.argv[0])
     RESDIR = os.path.abspath(pathname)
@@ -114,9 +115,9 @@ def t8430(구분='1'):   #구분에 따른 상장된 전 종목=0, 코스피=1, 
 
 
 def t1471(종목코드='',분구분='500',시간='',자료개수='001'):
-    '''
-    시간대별호가잔량추이
-    '''
+    
+    #시간대별호가잔량추이
+    
     query = win32com.client.DispatchWithEvents("XA_DataSet.XAQuery", XAQueryEvents)
     pathname = os.path.dirname(sys.argv[0])
     RESDIR = os.path.abspath(pathname)
@@ -193,9 +194,9 @@ def t1471(종목코드='',분구분='500',시간='',자료개수='001'):
 
 
 def t1475(종목코드='',상승하락='1',데이터개수='1',기준일자='',기준시간='',랭크카운터='',조회구분='1'):
-    '''
-    체결강도
-    '''
+    
+    #체결강도
+    
     query = win32com.client.DispatchWithEvents("XA_DataSet.XAQuery", XAQueryEvents)
     pathname = os.path.dirname(sys.argv[0])
     RESDIR = os.path.abspath(pathname)
@@ -242,9 +243,9 @@ def t1475(종목코드='',상승하락='1',데이터개수='1',기준일자='',�
 
 
 def t1636(구분="0",금액수량구분="1",정렬기준="",종목코드="",IDXCTS=""):
-    '''
-    종목별프로그램매매동향
-    '''
+    
+    #종목별프로그램매매동향
+    
     query = win32com.client.DispatchWithEvents("XA_DataSet.XAQuery", XAQueryEvents)
     pathname = os.path.dirname(sys.argv[0])
     RESDIR = os.path.abspath(pathname)
@@ -300,9 +301,9 @@ def t1636(구분="0",금액수량구분="1",정렬기준="",종목코드="",IDXC
 
 
 def t1701(종목코드="",구분="0",시작일자=b,종료일자=b,PR적용="",PR적용구분="1",기관적용="1",외인적용="1"):
-    '''
-    외인기관종목별동향
-    '''
+    
+    #외인기관종목별동향
+    
     query = win32com.client.DispatchWithEvents("XA_DataSet.XAQuery", XAQueryEvents)
     pathname = os.path.dirname(sys.argv[0])
     RESDIR = os.path.abspath(pathname)
@@ -356,9 +357,9 @@ def t1701(종목코드="",구분="0",시작일자=b,종료일자=b,PR적용="",P
 
 
 def t1702(종목코드="", 종료일자="", 금액수량구분="0", 매수매도구분="0", 누적구분="0", CTSDATE="", CTSIDX=""):
-    '''
-    외인기관종목별동향
-    '''
+    
+    #외인기관종목별동향
+    
     query = win32com.client.DispatchWithEvents("XA_DataSet.XAQuery", XAQueryEvents)
     pathname = os.path.dirname(sys.argv[0])
     RESDIR = os.path.abspath(pathname)
@@ -434,9 +435,9 @@ def t1702(종목코드="", 종료일자="", 금액수량구분="0", 매수매도
 
 # 외인기관종목별동향
 def t1717(종목코드='',구분='0',시작일자='',종료일자=''):
-    '''
-    외인기관종목별동향
-    '''
+    
+    #외인기관종목별동향
+    
     query = win32com.client.DispatchWithEvents("XA_DataSet.XAQuery", XAQueryEvents)
     pathname = os.path.dirname(sys.argv[0])
     RESDIR = os.path.abspath(pathname)
@@ -582,9 +583,9 @@ def t1717(종목코드='',구분='0',시작일자='',종료일자=''):
     return df
 
 def t4201(단축코드="",주기구분="2",틱개수="",건수="1",당일구분="1",시작일자="",종료일자="",연속일자="",연속시간="",연속당일구분="1"):  
-    '''
-    주식종목코드조회
-    '''
+    
+    #주식종목코드조회
+    
     query = win32com.client.DispatchWithEvents("XA_DataSet.XAQuery", XAQueryEvents)
     pathname = os.path.dirname(sys.argv[0])
     RESDIR = os.path.abspath(pathname)
@@ -641,9 +642,9 @@ def t4201(단축코드="",주기구분="2",틱개수="",건수="1",당일구분=
 
 # 관리/불성실/투자유의조회
 def t1404(구분='1',종목체크='',종목코드_CTS=""):
-    '''
-    관리/불성실/투자유의조회
-    '''
+    
+    #관리/불성실/투자유의조회
+    
     query = win32com.client.DispatchWithEvents("XA_DataSet.XAQuery", XAQueryEvents)
     pathname = os.path.dirname(sys.argv[0])
     RESDIR = os.path.abspath(pathname)
@@ -685,9 +686,9 @@ def t1404(구분='1',종목체크='',종목코드_CTS=""):
     
 # 투자경고/매매정지/정리매매조회
 def t1405(구분='1',종목체크='',종목코드_CTS=""):
-    '''
-    투자경고/매매정지/정리매매조회
-    '''
+    
+    #투자경고/매매정지/정리매매조회
+    
     query = win32com.client.DispatchWithEvents("XA_DataSet.XAQuery", XAQueryEvents)
     pathname = os.path.dirname(sys.argv[0])
     RESDIR = os.path.abspath(pathname)
@@ -728,9 +729,9 @@ def t1405(구분='1',종목체크='',종목코드_CTS=""):
 
 # 초저유동성조회
 def t1410(구분='1',종목코드_CTS=""):
-    '''
-    초저유동성조회
-    '''
+    
+    #초저유동성조회
+    
     query = win32com.client.DispatchWithEvents("XA_DataSet.XAQuery", XAQueryEvents)
     pathname = os.path.dirname(sys.argv[0])
     RESDIR = os.path.abspath(pathname)
@@ -1025,208 +1026,224 @@ if __name__ == "__main__":
         print("수집이 완료되었습니다")
         print("최종 데이터 수집입니다")
         print(df_result)
-            print("시작한시간: ", a)        
+        print("시작한시간: ", a)        
 
-        df_result.columns = ["date","code","name",
-                                     "d1","d2","d3","d4","d5","d6","d7","d8","d9","d10",
-                                     "d11","d12","d13","d14","d15","d16","d17","d18","d19","d20",
-                                     "d21","d22","d23","d24","d25","d26","d27","d28","d29","d30",
-                                     "d31","d32","d33","d34","d35","d36","d37","d38","d39","d40",
-                                     "d41","d42","d43","d44","d45","d46","d47","d48","d49","d50",
-                                     "d51","d52","d53","d54","d55","d56","d57","d58","d59","d60",
-                                     "d61","d62","d63","d64","d65","d66","d67","d68","d69","d70",
-                                     "d71","d72","d73","d74","d75","d76","d77","d78","d79","d80"]
-        
-        #판다스를 넘파이 형태로 변경
-        date = df_result.date.values
-        date = date.astype(str)
-        code = df_result.code.values
-        code = code.astype(str)
-        name = df_result.name.values
 
-        d1 = df_result.d1.values
-        d1 = df_result.d1.values    
-        d2 = df_result.d2.values
-        d3 = df_result.d3.values
-        d4 = df_result.d4.values
-        d5 = df_result.d5.values
-        d6 = df_result.d6.values
-        d7 = df_result.d7.values
-        d8 = df_result.d8.values
-        d9 = df_result.d9.values
-        d10 = df_result.d10.values
-        d11 = df_result.d11.values
-        d12 = df_result.d12.values
-        d13 = df_result.d13.values
-        d14 = df_result.d14.values
-        d15 = df_result.d15.values
-        d16 = df_result.d16.values
-        d17 = df_result.d17.values
-        d18 = df_result.d18.values
-        d19 = df_result.d19.values
-        d20 = df_result.d20.values
-        d21 = df_result.d21.values
-        d22 = df_result.d22.values
-        d23 = df_result.d23.values
-        d24 = df_result.d24.values
-        d25 = df_result.d25.values
-        d26 = df_result.d26.values
-        d27 = df_result.d27.values
-        d28 = df_result.d28.values
-        d29 = df_result.d29.values
-        d30 = df_result.d30.values
-        d31 = df_result.d31.values
-        d32 = df_result.d32.values
-        d33 = df_result.d33.values
-        d34 = df_result.d34.values
-        d35 = df_result.d35.values
-        d36 = df_result.d36.values
-        d37 = df_result.d37.values
-        d38 = df_result.d38.values
-        d39 = df_result.d39.values
-        d40 = df_result.d40.values
-        d41 = df_result.d41.values
-        d42 = df_result.d42.values
-        d43 = df_result.d43.values
-        d44 = df_result.d44.values
-        d45 = df_result.d45.values
-        d46 = df_result.d46.values
-        d47 = df_result.d47.values
-        d48 = df_result.d48.values
-        d49 = df_result.d49.values
-        d50 = df_result.d50.values
-        d51 = df_result.d51.values
-        d52 = df_result.d52.values
-        d53 = df_result.d53.values
-        d54 = df_result.d54.values
-        d55 = df_result.d55.values
-        d56 = df_result.d56.values
-        d57 = df_result.d57.values
-        d58 = df_result.d58.values
-        d59 = df_result.d59.values
-        d60 = df_result.d60.values
-        d61 = df_result.d61.values
-        d62 = df_result.d62.values
-        d63 = df_result.d63.values
-        d64 = df_result.d64.values
-        d65 = df_result.d65.values
-        d66 = df_result.d66.values
-        d67 = df_result.d67.values
-        d68 = df_result.d68.values
-        d69 = df_result.d69.values
-        d70 = df_result.d70.values
-        d71 = df_result.d71.values
-        d72 = df_result.d72.values
-        d73 = df_result.d73.values
-        d74 = df_result.d74.values
-        d75 = df_result.d75.values
-        d76 = df_result.d76.values
-        d77 = df_result.d77.values
-        d78 = df_result.d78.values
-        d79 = df_result.d79.values
-        d80 = df_result.d80.values
+#df_result = df_result.dropna() #빈값인 데이터 자체 날려버리기
+df_result = df_result.fillna(0) #빈값 0으로 채우기(이걸사용함)
+print(df_result)
 
-        #넘파이형로는 MYSQL 테이블에 넣지 못하기에 리스트형태로 변경
-        d1 = d1.tolist()
-        d2 = d2.tolist()
-        d3 = d3.tolist()
-        d4 = d4.tolist()
-        d5 = d5.tolist()
-        d6 = d6.tolist()
-        d7 = d7.tolist()
-        d8 = d8.tolist()
-        d9 = d9.tolist()
-        d10 = d10.tolist()
-        d11 = d11.tolist()
-        d12 = d12.tolist()
-        d13 = d13.tolist()
-        d14 = d14.tolist()
-        d15 = d15.tolist()
-        d16 = d16.tolist()
-        d17 = d17.tolist()
-        d18 = d18.tolist()
-        d19 = d19.tolist()
-        d20 = d20.tolist()
-        d21 = d21.tolist()
-        d22 = d22.tolist()
-        d23 = d23.tolist()
-        d24 = d24.tolist()
-        d25 = d25.tolist()
-        d26 = d26.tolist()
-        d27 = d27.tolist()
-        d28 = d28.tolist()
-        d29 = d29.tolist()
-        d30 = d30.tolist()
-        d31 = d31.tolist()
-        d32 = d32.tolist()
-        d33 = d33.tolist()
-        d34 = d34.tolist()
-        d35 = d35.tolist()
-        d36 = d36.tolist()
-        d37 = d37.tolist()
-        d38 = d38.tolist()
-        d39 = d39.tolist()
-        d40 = d40.tolist()
-        d41 = d41.tolist()
-        d42 = d42.tolist()
-        d43 = d43.tolist()
-        d44 = d44.tolist()
-        d45 = d45.tolist()
-        d46 = d46.tolist()
-        d47 = d47.tolist()
-        d48 = d48.tolist()
-        d49 = d49.tolist()
-        d50 = d50.tolist()
-        d51 = d51.tolist()
-        d52 = d52.tolist()
-        d53 = d53.tolist()
-        d54 = d54.tolist()
-        d55 = d55.tolist()
-        d56 = d56.tolist()
-        d57 = d57.tolist()
-        d58 = d58.tolist()
-        d59 = d59.tolist()
-        d60 = d60.tolist()
-        d61 = d61.tolist()
-        d62 = d62.tolist()
-        d63 = d63.tolist()
-        d64 = d64.tolist()
-        d65 = d65.tolist()
-        d66 = d66.tolist()
-        d67 = d67.tolist()
-        d68 = d68.tolist()
-        d69 = d69.tolist()
-        d70 = d70.tolist()
-        d71 = d71.tolist()
-        d72 = d72.tolist()
-        d73 = d73.tolist()
-        d74 = d74.tolist()
-        d75 = d75.tolist()
-        d76 = d76.tolist()
-        d77 = d77.tolist()
-        d78 = d78.tolist()
-        d79 = d79.tolist()
-        d80 = d80.tolist()
+df_result.columns = ["date","code","name",
+                             "d1","d2","d3","d4","d5","d6","d7","d8","d9","d10",
+                             "d11","d12","d13","d14","d15","d16","d17","d18","d19","d20",
+                             "d21","d22","d23","d24","d25","d26","d27","d28","d29","d30",
+                             "d31","d32","d33","d34","d35","d36","d37","d38","d39","d40",
+                             "d41","d42","d43","d44","d45","d46","d47","d48","d49","d50",
+                             "d51","d52","d53","d54","d55","d56","d57","d58","d59","d60",
+                             "d61","d62","d63","d64","d65","d66","d67","d68","d69","d70",
+                             "d71","d72","d73","d74","d75","d76","d77","d78","d79","d80"]
 
-        
-        #MYSQL / quantgo_kospi_train 테이블에 학습데이터 집어넣기
-        for i in range (len(df_result)):
-            print(name[i])
-            sql = 'insert into quantgo_kospi_train (date,code,name,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31,d32,d33,d34,d35,d36,d37,d38,d39,d40,d41,d42,d43,d44,d45,d46,d47,d48,d49,d50,d51,d52,d53,d54,d55,d56,d57,d58,d59,d60,d61,d62,d63,d64,d65,d66,d67,d68,d69,d70,d71,d72,d73,d74,d75,d76,d77,d78,d79,d80) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-            cur.execute(sql, (date[i],code[i],name[i],
-                            d1[i],d2[i],d3[i],d4[i],d5[i],d6[i],d7[i],d8[i],d9[i],d10[i],
-                            d11[i],d12[i],d13[i],d14[i],d15[i],d16[i],d17[i],d18[i],d19[i],d20[i],
-                            d21[i],d22[i],d23[i],d24[i],d25[i],d26[i],d27[i],d28[i],d29[i],d30[i],
-                            d31[i],d32[i],d33[i],d34[i],d35[i],d36[i],d37[i],d38[i],d39[i],d40[i],
-                            d41[i],d42[i],d43[i],d44[i],d45[i],d46[i],d47[i],d48[i],d49[i],d50[i],
-                            d51[i],d52[i],d53[i],d54[i],d55[i],d56[i],d57[i],d58[i],d59[i],d60[i],
-                            d61[i],d62[i],d63[i],d64[i],d65[i],d66[i],d67[i],d68[i],d69[i],d70[i],
-                            d71[i],d72[i],d73[i],d74[i],d75[i],d76[i],d77[i],d78[i],d79[i],d80[i]))
-            conn.commit()
-            print("학습데이터 집어 넣기 성공")
-        print(len(name))
 
-        
+print(len(df_result))
+
+#판다스 넘파이 형태로 변경
+date = df_result.date.values
+date = date.astype(str)
+code = df_result.code.values
+code = code.astype(str)
+name = df_result.name.values
+
+d1 = df_result.d1.values    
+d2 = df_result.d2.values
+d3 = df_result.d3.values
+d4 = df_result.d4.values
+d5 = df_result.d5.values
+d6 = df_result.d6.values
+d7 = df_result.d7.values
+d8 = df_result.d8.values
+d9 = df_result.d9.values
+d10 = df_result.d10.values
+d11 = df_result.d11.values
+d12 = df_result.d12.values
+d13 = df_result.d13.values
+d14 = df_result.d14.values
+d15 = df_result.d15.values
+d16 = df_result.d16.values
+d17 = df_result.d17.values
+d18 = df_result.d18.values
+d19 = df_result.d19.values
+d20 = df_result.d20.values
+d21 = df_result.d21.values
+d22 = df_result.d22.values
+d23 = df_result.d23.values
+d24 = df_result.d24.values
+d25 = df_result.d25.values
+d26 = df_result.d26.values
+d27 = df_result.d27.values
+d28 = df_result.d28.values
+d29 = df_result.d29.values
+d30 = df_result.d30.values
+d31 = df_result.d31.values
+d32 = df_result.d32.values
+d33 = df_result.d33.values
+d34 = df_result.d34.values
+d35 = df_result.d35.values
+d36 = df_result.d36.values
+d37 = df_result.d37.values
+d38 = df_result.d38.values
+d39 = df_result.d39.values
+d40 = df_result.d40.values
+d41 = df_result.d41.values
+d42 = df_result.d42.values
+d43 = df_result.d43.values
+d44 = df_result.d44.values
+d45 = df_result.d45.values
+d46 = df_result.d46.values
+d47 = df_result.d47.values
+d48 = df_result.d48.values
+d49 = df_result.d49.values
+d50 = df_result.d50.values
+d51 = df_result.d51.values
+d52 = df_result.d52.values
+d53 = df_result.d53.values
+d54 = df_result.d54.values
+d55 = df_result.d55.values
+d56 = df_result.d56.values
+d57 = df_result.d57.values
+d58 = df_result.d58.values
+d59 = df_result.d59.values
+d60 = df_result.d60.values
+d61 = df_result.d61.values
+d62 = df_result.d62.values
+d63 = df_result.d63.values
+d64 = df_result.d64.values
+d65 = df_result.d65.values
+d66 = df_result.d66.values
+d67 = df_result.d67.values
+d68 = df_result.d68.values
+d69 = df_result.d69.values
+d70 = df_result.d70.values
+d71 = df_result.d71.values
+d72 = df_result.d72.values
+d73 = df_result.d73.values
+d74 = df_result.d74.values
+d75 = df_result.d75.values
+d76 = df_result.d76.values
+d77 = df_result.d77.values
+d78 = df_result.d78.values
+d79 = df_result.d79.values
+d80 = df_result.d80.values
+
+#넘파이형로는 MYSQL 테이블에 넣지 못하기에 리스트형태로 변경
+
+d1 = d1.tolist()
+d2 = d2.tolist()
+d3 = d3.tolist()
+d4 = d4.tolist()
+d5 = d5.tolist()
+d6 = d6.tolist()
+d7 = d7.tolist()
+d8 = d8.tolist()
+d9 = d9.tolist()
+d10 = d10.tolist()
+d11 = d11.tolist()
+d12 = d12.tolist()
+d13 = d13.tolist()
+d14 = d14.tolist()
+d15 = d15.tolist()
+d16 = d16.tolist()
+d17 = d17.tolist()
+d18 = d18.tolist()
+d19 = d19.tolist()
+d20 = d20.tolist()
+d21 = d21.tolist()
+d22 = d22.tolist()
+d23 = d23.tolist()
+d24 = d24.tolist()
+d25 = d25.tolist()
+d26 = d26.tolist()
+d27 = d27.tolist()
+d28 = d28.tolist()
+d29 = d29.tolist()
+d30 = d30.tolist()
+d31 = d31.tolist()
+d32 = d32.tolist()
+d33 = d33.tolist()
+d34 = d34.tolist()
+d35 = d35.tolist()
+d36 = d36.tolist()
+d37 = d37.tolist()
+d38 = d38.tolist()
+d39 = d39.tolist()
+d40 = d40.tolist()
+d41 = d41.tolist()
+d42 = d42.tolist()
+d43 = d43.tolist()
+d44 = d44.tolist()
+d45 = d45.tolist()
+d46 = d46.tolist()
+d47 = d47.tolist()
+d48 = d48.tolist()
+d49 = d49.tolist()
+d50 = d50.tolist()
+d51 = d51.tolist()
+d52 = d52.tolist()
+d53 = d53.tolist()
+d54 = d54.tolist()
+d55 = d55.tolist()
+d56 = d56.tolist()
+d57 = d57.tolist()
+d58 = d58.tolist()
+d59 = d59.tolist()
+d60 = d60.tolist()
+d61 = d61.tolist()
+d62 = d62.tolist()
+d63 = d63.tolist()
+d64 = d64.tolist()
+d65 = d65.tolist()
+d66 = d66.tolist()
+d67 = d67.tolist()
+d68 = d68.tolist()
+d69 = d69.tolist()
+d70 = d70.tolist()
+d71 = d71.tolist()
+d72 = d72.tolist()
+d73 = d73.tolist()
+d74 = d74.tolist()
+d75 = d75.tolist()
+d76 = d76.tolist()
+d77 = d77.tolist()
+d78 = d78.tolist()
+d79 = d79.tolist()
+d80 = d80.tolist()
+
+
+print("잠시 후 MYSQL에 학습데이터 insert")
+time.sleep(5)
+
+conn = pymysql.connect(host = '183.98.188.74', user = 'lyj', password = 'test1234', db = 'quantgo', charset = 'utf8') #미라클서버연결
+cur = conn.cursor()
+
+for i in range (len(df_result)):
+    print(name[i])
+    sql = 'insert into quantgo_kospi_train (date,code,name,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31,d32,d33,d34,d35,d36,d37,d38,d39,d40,d41,d42,d43,d44,d45,d46,d47,d48,d49,d50,d51,d52,d53,d54,d55,d56,d57,d58,d59,d60,d61,d62,d63,d64,d65,d66,d67,d68,d69,d70,d71,d72,d73,d74,d75,d76,d77,d78,d79,d80) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+    cur.execute(sql, (date[i],code[i],name[i],
+                      d1[i],d2[i],d3[i],d4[i],d5[i],d6[i],d7[i],d8[i],d9[i],d10[i],
+                      d11[i],d12[i],d13[i],d14[i],d15[i],d16[i],d17[i],d18[i],d19[i],d20[i],
+                      d21[i],d22[i],d23[i],d24[i],d25[i],d26[i],d27[i],d28[i],d29[i],d30[i],
+                      d31[i],d32[i],d33[i],d34[i],d35[i],d36[i],d37[i],d38[i],d39[i],d40[i],
+                      d41[i],d42[i],d43[i],d44[i],d45[i],d46[i],d47[i],d48[i],d49[i],d50[i],
+                      d51[i],d52[i],d53[i],d54[i],d55[i],d56[i],d57[i],d58[i],d59[i],d60[i],
+                      d61[i],d62[i],d63[i],d64[i],d65[i],d66[i],d67[i],d68[i],d69[i],d70[i],
+                      d71[i],d72[i],d73[i],d74[i],d75[i],d76[i],d77[i],d78[i],d79[i],d80[i]))
+    #sql = 'insert into quantgo_kospi_train (date,code,name,d1,d2,d3) values (%s,%s,%s,%s,%s,%s)'
+    #sql = 'insert into quantgo_kospi_train (date) values (%s)'
+    #cur.execute(sql, (date[i],code[i],name[i],d1[i],d2[i],d3[i]))
+    conn.commit()
+    print("성공")
+print("금일 학습데이터 수집 최종 마무리 되었습니다")
+print(len(name))
+
 
 writer = pd.ExcelWriter("Train_Normalization.xlsx", engine="xlsxwriter")
 df_result.to_excel(writer, sheet_name="Sheet1")
