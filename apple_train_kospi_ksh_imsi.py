@@ -75,7 +75,6 @@ print(miracle_x)
 
 
 
-miracle_x = np.array(res)
 final_x = miracle_x[:, 4:-32] #x만 가져오기
 final_t = miracle_x[:, -32:] #final, t가져오기
 
