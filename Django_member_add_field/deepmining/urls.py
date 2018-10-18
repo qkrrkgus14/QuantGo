@@ -17,7 +17,9 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    #url(r'^$',  )
+    
     url(r'^admin/', admin.site.urls),
+    #사용자(회원)관리는 보통 accounts앱을 만들어서 여기서 관리를 하고 
+    #accounts앱에는 네임스페이를 지정하지 않는다.
     url(r'^accounts/', include("accounts.urls")),
 ]
